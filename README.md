@@ -72,6 +72,14 @@ Note that the results come in at the top of the view.
 - All json object entries are sorted.
 - Close to i18n ready, but no tests for it, therefore likely bugs to be found.
 
+## Enhancements ##
+
+- Emoticons and mentions likely need their own mappers to retrieve a resource ref.
+- Incremental parsing could be provided with Visitor style blocks/closures that could be used while the user is entering the string.
+- Mappers would use local caching/data stores to avoid latencies while user is entering text.
+- Detectors and Mappers could be made concurrent. However given the input size and on-device usage it's debatable how useful this would be.  Some testing would be useful here.
+
+
 
 ## Spec ##
 
