@@ -58,7 +58,7 @@ Please see the source code for more detail.  A good starting place is [MessagePr
 
 The app is a universal iOS 8 project.  
 
-![App Screenshot](app-screen.png)
+![App Screenshot](https://bitbucket.org/repo/5oLEBp/images/2499147738-app-screen.png)
 
 Note that the results come in at the top of the view.
 
@@ -136,6 +136,3 @@ Note that the results come in at the top of the view.
 	    }
 	  ]
 	}
-
-
-
