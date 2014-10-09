@@ -34,7 +34,7 @@ extension String{
         }
         
         // Ignore the error, just check that we got a pattern.  TODO: Would be ideal to log this error case.
-        if let pat = NSRegularExpression.regularExpressionWithPattern(regex, options: .CaseInsensitive, error: nil){
+        if let pat = NSRegularExpression(pattern: regex, options: .CaseInsensitive, error: nil){
             pat.enumerateMatchesInString(self, options: nil, range:  NSMakeRange(0,countElements(self)), usingBlock: { (match, statusFlags, stop) -> Void in
                 // if we have a capture group defined in the regex it'll be the match at index 1.
                 let r = match.numberOfRanges > 1 ? match.rangeAtIndex(1):match.rangeAtIndex(0)
