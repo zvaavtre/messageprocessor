@@ -42,11 +42,11 @@ class SyncLinkExternalMapper {
             let titleKey = "title"
             
             // Now return the dictionary to complete the [[String:String]] type in the output of the map
-            let url = NSURL.URLWithString(link)
+            let url = NSURL(string:link)
             if url == nil{
                 return [urlKey:link, titleKey:""]
             }
-            var page = NSString.stringWithContentsOfURL(url, encoding:NSUTF8StringEncoding, error: nil)  // Note we are guessing at encoding here.
+            var page =  NSString(contentsOfURL: url!, encoding: NSUTF8StringEncoding, error: nil)  // Note we are guessing at encoding here.
             if page == nil {
                 return [urlKey:link, titleKey:""]
             }

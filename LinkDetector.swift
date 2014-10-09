@@ -31,7 +31,7 @@ class LinkDetector:Detector{
     
     */
     func detect(inputString:String) -> Array<String>{
-        let detector = NSDataDetector.dataDetectorWithTypes(NSTextCheckingType.Link.toRaw(), error:nil)
+        let detector = NSDataDetector(types: NSTextCheckingType.Link.rawValue, error: nil)
         let matches = detector?.matchesInString(inputString, options:nil, range: NSMakeRange(0,countElements(inputString)))
         var out = [String]()
         if matches != nil {
