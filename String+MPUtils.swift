@@ -22,7 +22,7 @@ extension String{
     
     Helper for matching the various regexes we use.
     
-    If there is a capture group in the regex we'll use that to extract the match.  But only for the first one.
+    If there are capture groups in the regex we'll use that to extract the match.  Supports multiple capture groups. Array will contain them in order.
     
     */
     func mpMatchStringsForRegex(regex:String) -> Array<String>{
@@ -35,10 +35,23 @@ extension String{
         
         // Ignore the error, just check that we got a pattern.  TODO: Would be ideal to log this error case.
         if let pat = NSRegularExpression(pattern: regex, options: .CaseInsensitive, error: nil){
+            // if we have more than one range then we have capture groups to get.
+        
             pat.enumerateMatchesInString(self, options: nil, range:  NSMakeRange(0,countElements(self)), usingBlock: { (match, statusFlags, stop) -> Void in
-                // if we have a capture group defined in the regex it'll be the match at index 1.
-                let r = match.numberOfRanges > 1 ? match.rangeAtIndex(1):match.rangeAtIndex(0)
-                output.append(self .mpSubstringWithRange(r))
+                if(match.numberOfRanges > 1){
+                    
+                    // 1 to numberOfRanges-1 are the available capture groups
+                    for var i = 1; i < match.numberOfRanges; i++ {
+                        output.append(self.mpSubstringWithRange(match.rangeAtIndex(i)))
+                    }
+                    
+                }else{
+                    
+                    // No capture groups. index 0 is the whole match
+                    let r = match.rangeAtIndex(0)
+                    output.append(self.mpSubstringWithRange(r))
+                    
+                }
             })
         }
         
