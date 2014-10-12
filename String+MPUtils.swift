@@ -35,9 +35,9 @@ extension String{
         
         // Ignore the error, just check that we got a pattern.  TODO: Would be ideal to log this error case.
         if let pat = NSRegularExpression(pattern: regex, options: .CaseInsensitive, error: nil){
-            // if we have more than one range then we have capture groups to get.
+            // if we have more than one range then we have capture groups to get. Notice range needs the underlying NSString count to handle clusters correctly.
         
-            pat.enumerateMatchesInString(self, options: nil, range:  NSMakeRange(0,countElements(self)), usingBlock: { (match, statusFlags, stop) -> Void in
+            pat.enumerateMatchesInString(self, options: nil, range:  NSMakeRange(0,self.utf16Count), usingBlock: { (match, statusFlags, stop) -> Void in
                 if(match.numberOfRanges > 1){
                     
                     // 1 to numberOfRanges-1 are the available capture groups
