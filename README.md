@@ -1,3 +1,6 @@
+# NOTE
+	Written for a coding exercise. So kinda verbose in the comments and what not.  
+
 # MessageProcessor #
 
 Example code/app that will consume a chat message string and emit a json string containing info about specific content of the app.
